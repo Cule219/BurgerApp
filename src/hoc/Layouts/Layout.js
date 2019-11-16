@@ -1,12 +1,11 @@
 import React from "react";
-import Aux from "../../hoc/Aux";
 import classes from "./Layout.css";
-import Toolbar from "../Navigation/Toolbar/Toolbar";
-import SideDrawer from "../Navigation/SideDrawer/SideDrawer";
+import Toolbar from "../../components/Navigation/Toolbar/Toolbar";
+import SideDrawer from "../../components/Navigation/SideDrawer/SideDrawer";
 
 export default class Layout extends React.Component {
   state = {
-    showSideDrawer: true
+    showSideDrawer: false
   };
 
   sideDrawerClosedHandler = () => {
@@ -23,14 +22,14 @@ export default class Layout extends React.Component {
 
   render() {
     return (
-      <Aux>
+      <>
         <Toolbar clicked={this.drawerToggleHandler}/>
         <SideDrawer
           show={this.state.showSideDrawer}
           clicked={this.sideDrawerClosedHandler}
         />
         <main className={classes.Content}>{this.props.children}</main>
-      </Aux>
+      </>
     );
   }
 }
