@@ -1,5 +1,6 @@
 import React from 'react';
 import Button from '../../UI/Button/Button';
+import { Link } from 'react-router-dom';
 
 class OrderSummary extends React.Component {
     //for testing purpose
@@ -22,7 +23,9 @@ class OrderSummary extends React.Component {
                 <p><strong>Total price: {this.props.price}</strong></p>
                 <p>Continiue to Checkout</p>
                 <Button btnType={'Danger'} clicked={this.props.orderCanceled}>CANCEL</Button>
-                <Button btnType={'Success'} clicked={this.props.orderContinue}>CONTINUE</Button>
+                <Link to='/checkout'>
+                    <Button btnType={'Success'} clicked={this.props.orderContinue}>CONTINUE</Button>
+                </Link>
             </>
         );
         

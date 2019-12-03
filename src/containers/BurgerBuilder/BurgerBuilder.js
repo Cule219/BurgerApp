@@ -25,6 +25,7 @@ class BurgerBuilder extends Component {
     }
 
     componentDidMount () {
+        console.log(this.props)
         axios.get('https://react-my-burger-4fbc0.firebaseio.com/ingredients.json')
         .then(response => {
             this.setState({
@@ -80,26 +81,27 @@ class BurgerBuilder extends Component {
     }
 
     orderClosedHandler = () => {
-        this.setState({ordering: false})
+        this.setState({ordering: false});
     }
 
     orderContinueHandler = () => {
-        this.setState({ loading: true });
-        axios.post('/orders.json', { 
-            ingredients: this.state.ingredients,
-            price: this.state.totalPrice,
-            customer: 'Customer name',
-            address: {
-                street: 'Example street',
-                zipCode: '44141',
-                country: 'Germany'
-            },
-            email: 'test@test.com',
-            deliveryMethod: 'fastest'
-        })
-        .then(response => 
-        this.setState({ loading: false, ordering: false}))
-        .catch(err => this.setState({ loading: false, ordering: false}))
+        this.props.history.push('/checkout');
+        // this.setState({ loading: true });
+        // axios.post('/orders.json', { 
+        //     ingredients: this.state.ingredients,
+        //     price: this.state.totalPrice,
+        //     customer: 'Customer name',
+        //     address: {
+        //         street: 'Example street',
+        //         zipCode: '44141',
+        //         country: 'Germany'
+        //     },
+        //     email: 'test@test.com',
+        //     deliveryMethod: 'fastest'
+        // })
+        // .then(response => 
+        // this.setState({ loading: false, ordering: false}))
+        // .catch(err => this.setState({ loading: false, ordering: false}))
     }
 
     render() {
