@@ -89,28 +89,12 @@ class BurgerBuilder extends Component {
         for(let i in this.state.ingredients) {
             queryParams.push(encodeURIComponent(i) + '=' + encodeURIComponent(this.state.ingredients[i]));
         }
+        queryParams.push('price=' + this.state.totalPrice);
         const queryString = queryParams.join('&');
-        console.log(queryString);
         this.props.history.push({
             pathname: '/checkout',
             search: '?' + queryString
         });
-        // this.setState({ loading: true });
-        // axios.post('/orders.json', { 
-        //     ingredients: this.state.ingredients,
-        //     price: this.state.totalPrice,
-        //     customer: 'Customer name',
-        //     address: {
-        //         street: 'Example street',
-        //         zipCode: '44141',
-        //         country: 'Germany'
-        //     },
-        //     email: 'test@test.com',
-        //     deliveryMethod: 'fastest'
-        // })
-        // .then(response => 
-        // this.setState({ loading: false, ordering: false}))
-        // .catch(err => this.setState({ loading: false, ordering: false}))
     }
 
     render() {
@@ -140,7 +124,7 @@ class BurgerBuilder extends Component {
                     this.state.ingredients 
                     ?
                     <>
-                        <Burger ingredients={this.state.ingredients}/>
+                        <Burger  ingredients={this.state.ingredients}/>
                         <BuildControls 
                         added={this.addIngredientHandler} 
                         removed={this.removeIngredientHandler}
