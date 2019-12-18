@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Route } from 'react-router-dom';
 import CheckoutSummary from '../../components/Order/CheckoutSummary/CheckoutSummary';
 import ContactData from './ContactData/ContactData';
+import Orders from '../Orders/Orders'
 
 export default class Checkout extends Component {
     state = {
@@ -53,6 +54,7 @@ export default class Checkout extends Component {
                 <Route 
                 path={this.props.match.path + '/contact-data'} 
                 render={(props) => <ContactData ingredients={this.state.ingredients} {...props} price={this.state.price}/>} />
+                <Orders />
             </div>
         )
     }
