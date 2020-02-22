@@ -6,31 +6,30 @@ import Orders from '../Orders/Orders';
 
 export default class Checkout extends Component {
 	state = {
-		ingredients : {
-			salad  : null,
-			meat   : null,
-			cheese : null,
-			bakon  : null
+		ingredients: {
+			salad: null,
+			meat: null,
+			cheese: null,
+			bakon: null
 		},
-		price       : 0
+		price: 0
 	};
 
-	UNSAFE_componentWillMount () {
+	UNSAFE_componentWillMount() {
 		const query = new URLSearchParams(this.props.location.search);
 		const ingredients = {};
 		let price = 0;
 		for (let param of query.entries()) {
 			if (param[0] === 'price') {
 				price = param[1];
-				console.log('>>>>', param[1]);
 			}
 			else {
 				ingredients[param[0]] = +param[1];
 			}
 		}
 		this.setState({
-			price       : price,
-			ingredients : ingredients
+			price: price,
+			ingredients: ingredients
 		});
 	}
 
@@ -42,7 +41,7 @@ export default class Checkout extends Component {
 		this.props.history.replace('/checkout/contact-data');
 	};
 
-	render () {
+	render() {
 		return (
 			<div>
 				<CheckoutSummary

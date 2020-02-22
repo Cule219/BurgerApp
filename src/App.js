@@ -6,7 +6,7 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Orders from './containers/Orders/Orders';
 
 export default class App extends Component {
-	render () {
+	render() {
 		return (
 			<Router>
 				<Layout>
